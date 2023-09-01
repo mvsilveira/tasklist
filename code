@@ -1,0 +1,43 @@
+def main_menu():
+    print(5*"=","Menu Principal",5*"=")
+    print("1. Adicionar Tarefa")
+    print("2. Marcar Tarefa como Concluída")
+    print("3. Ver lista")
+    print("4. Sair\n")
+
+def add_task(list):
+    new_task = input("Adicione sua nova tarefa: \n")
+    list[new_task] = False
+    print(f"Tarefa, '{new_task}' adicionada!")
+
+def task_done(list):
+    done = input("Diga a tarefa que deseja concluir: \n")
+    if done in list:
+        list[done] = True
+        print("Nada como a sensação de dever cumprido!")
+    else:
+        print(f"Tarefa, '{done}' não encontrada.")
+
+def show_list(list):
+    if not list:
+        print("Nenhuma tarefa pendente.")
+    else:
+        print("Lista de tarefas:")
+        for task, completed in list.items():
+            status = "Concluída" if completed else "Pendente"
+            print(f"- {task}: {status}")
+list = {}
+
+while True:
+    main_menu()
+    option = input("Diga qual sua opção:")
+    if option == "1":
+        add_task(list)
+    elif option == "2":
+        task_done(list)
+    elif option == "3":
+        show_list(list)
+    elif option == "4":
+        break
+    else:
+        print("Selecione uma opção válida")
